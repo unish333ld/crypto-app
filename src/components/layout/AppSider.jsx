@@ -1,4 +1,6 @@
-import { Layout } from 'antd';
-import { AppstoreOutlined, BarChartOutlined, CompassOutlined, SettingOutlined, WalletOutlined } from '@ant-design/icons';
-const items = [[AppstoreOutlined, 'Overview', true], [BarChartOutlined, 'Markets'], [WalletOutlined, 'Portfolio'], [CompassOutlined, 'Discover']];
-export default function AppSider() { return <Layout.Sider className="side-nav" breakpoint="md" collapsedWidth="0"><div className="side-label">Workspace</div>{items.map((item) => { const ItemIcon = item[0]; return <div className={`nav-item ${item[2] ? 'active' : ''}`} key={item[1]}><ItemIcon /><span>{item[1]}</span></div>; })}<div className="nav-spacer" /><div className="side-label">Preferences</div><div className="nav-item"><SettingOutlined /><span>Settings</span></div><div className="side-card"><small>Market sentiment</small><strong>Greed is back</strong><span>● 72 / 100 &nbsp; +8.4%</span></div></Layout.Sider>; }
+import { Layout, Menu, Typography } from 'antd';
+import { AppstoreOutlined, BarChartOutlined, SettingOutlined, WalletOutlined } from '@ant-design/icons';
+
+const menuItems = [{ key: 'overview', icon: <AppstoreOutlined />, label: 'Обзор' }, { key: 'markets', icon: <BarChartOutlined />, label: 'Рынок' }, { key: 'portfolio', icon: <WalletOutlined />, label: 'Портфель' }, { key: 'settings', icon: <SettingOutlined />, label: 'Настройки' }];
+
+export default function AppSider() { return <Layout.Sider className="side-nav" breakpoint="lg" collapsedWidth="0"><div className="side-heading">Разделы</div><Menu mode="inline" selectedKeys={['overview']} items={menuItems} /><div className="side-note"><Typography.Text strong>Данные обновляются</Typography.Text><Typography.Text type="secondary">Цены загружены из локального набора данных</Typography.Text></div></Layout.Sider>; }
